@@ -19,7 +19,7 @@ class SensorListCreateView(ListCreateAPIView):
     def get(self, request):
         print('-------SensorListCreateView-------')
         queryset = Sensor.objects.all()
-        serializer = SensorDetailSerializer(queryset, many=True)
+        serializer = SensorSerializer(queryset, many=True)
         return Response(serializer.data)
 
     def post(self, request):
@@ -33,9 +33,6 @@ class SensorListCreateView(ListCreateAPIView):
 class SensorRetrieveUpdateAPIView(RetrieveUpdateAPIView):
     queryset = Sensor.objects.all()
     serializer_class = SensorDetailSerializer
-    # def get(self, request):
-    #     serializer = SensorDetailSerializer(queryset, many=True)
-    #     return Response(serializer.data)
 
 
 class MeasurementListCreateView(ListCreateAPIView):
